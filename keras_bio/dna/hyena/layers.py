@@ -104,6 +104,7 @@ class HyenaPositionalEmbedding(layers.Layer):
         **kwargs: Any,
     ):
         super().__init__(**kwargs)
+        self._allow_non_tensor_positional_args = True
         self.config = config
         self.seq_len = int(config.max_seq_len)
         self.emb_dim = int(config.emb_dim)
