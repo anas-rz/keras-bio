@@ -35,14 +35,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest numpy sentencepiece transformers
 
+      - name: Install PyTorch (CPU)
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+
       - name: Install Backend (${{ matrix.backend }})
         run: |
           if [ "${{ matrix.backend }}" = "tensorflow" ]; then
-            pip install "tensorflow-cpu>=2.16.0" "keras>=3.0.0" "torch>=2.0.0"
+            pip install "tensorflow-cpu>=2.16.0" "keras>=3.0.0"
           elif [ "${{ matrix.backend }}" = "torch" ]; then
-            pip install "torch>=2.0.0" "keras>=3.0.0"
+            pip install "keras>=3.0.0"
           elif [ "${{ matrix.backend }}" = "jax" ]; then
-            pip install "jax[cpu]" "keras>=3.0.0" "torch>=2.0.0"
+            pip install "jax[cpu]" "keras>=3.0.0"
           fi
 
       - name: Install keras-bio in editable mode

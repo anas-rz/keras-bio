@@ -60,7 +60,7 @@ classifier = ProtT5ForSequenceClassification(config, num_classes=3)
 cls_out = classifier(batch)
 print("Classification logits shape:", cls_out["logits"].shape)  # (3, 3)
 probs = keras.ops.softmax(cls_out["logits"], axis=-1)
-print("Predicted probabilities for seq 0:", probs[0].numpy())
+print("Predicted probabilities for seq 0:", keras.ops.convert_to_numpy(probs[0]))
 
 print("\nProtT5 Keras-Bio Quickstart successfully finished!")
 

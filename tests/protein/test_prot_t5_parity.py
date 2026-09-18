@@ -1,5 +1,6 @@
 """Exact numerical parity verification against Hugging Face PyTorch T5."""
 
+import keras.ops as ops
 import numpy as np
 import pytest
 import torch
@@ -55,7 +56,7 @@ def test_ungated_encoder_parity():
     k_out = k_model({"input_ids": input_ids, "attention_mask": attention_mask})[
         "last_hidden_state"
     ]
-    k_out_np = np.asarray(k_out)
+    k_out_np = ops.convert_to_numpy(k_out)
 
     diff = np.max(np.abs(pt_out - k_out_np))
     assert diff < 1e-4, f"Ungated encoder max diff too large: {diff}"
@@ -99,7 +100,7 @@ def test_gated_encoder_parity():
     k_out = k_model({"input_ids": input_ids, "attention_mask": attention_mask})[
         "last_hidden_state"
     ]
-    k_out_np = np.asarray(k_out)
+    k_out_np = ops.convert_to_numpy(k_out)
 
     diff = np.max(np.abs(pt_out - k_out_np))
     assert diff < 1e-4, f"Gated encoder max diff too large: {diff}"
@@ -150,7 +151,7 @@ def test_full_model_parity():
             "decoder_input_ids": decoder_input_ids,
         }
     )
-    k_logits = np.asarray(k_out["logits"])
+    k_logits = ops.convert_to_numpy(k_out["logits"])
 
     diff = np.max(np.abs(pt_logits - k_logits))
     assert diff < 1e-4, f"Full model logits max diff too large: {diff}"
