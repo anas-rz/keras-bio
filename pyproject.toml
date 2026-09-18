@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keras-bio"
+version = "0.1.0"
+description = "Multi-backend biological sequence and structure foundation models in Keras 3"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "keras-bio contributors" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "keras>=3.0.0",
+    "numpy>=1.23.0",
+    "packaging",
+]
+
+[project.optional-dependencies]
+torch = ["torch>=2.0.0"]
+transformers = ["transformers>=4.30.0", "sentencepiece", "tokenizers"]
+dev = [
+    "pytest>=7.0.0",
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "sentencepiece",
+    "tokenizers",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["keras_bio*"]
+

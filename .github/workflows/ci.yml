@@ -1,0 +1,63 @@
+name: CI (Multi-Backend)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test on ${{ matrix.backend }} (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        backend: ["tensorflow", "torch", "jax"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Upgrade pip & install common test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest numpy sentencepiece transformers
+
+      - name: Install Backend (${{ matrix.backend }})
+        run: |
+          if [ "${{ matrix.backend }}" = "tensorflow" ]; then
+            pip install "tensorflow-cpu>=2.16.0" "keras>=3.0.0" "torch>=2.0.0"
+          elif [ "${{ matrix.backend }}" = "torch" ]; then
+            pip install "torch>=2.0.0" "keras>=3.0.0"
+          elif [ "${{ matrix.backend }}" = "jax" ]; then
+            pip install "jax[cpu]" "keras>=3.0.0" "torch>=2.0.0"
+          fi
+
+      - name: Install keras-bio in editable mode
+        run: |
+          pip install -e . --no-deps
+
+      - name: Run Full Test Suite on ${{ matrix.backend }}
+        env:
+          KERAS_BACKEND: ${{ matrix.backend }}
+        run: |
+          pytest tests/ -v
+
+      - name: Run Quickstart Script on ${{ matrix.backend }}
+        env:
+          KERAS_BACKEND: ${{ matrix.backend }}
+        run: |
+          python examples/prot_t5_quickstart.py
+
