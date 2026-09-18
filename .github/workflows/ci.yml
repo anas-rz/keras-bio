@@ -70,4 +70,5 @@ jobs:
         run: |
           python examples/prot_t5_quickstart.py
           python examples/esm2_quickstart.py
+          python examples/dnabert_quickstart.py
 
