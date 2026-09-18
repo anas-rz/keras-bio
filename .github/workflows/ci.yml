@@ -51,17 +51,22 @@ jobs:
 
       - name: Install keras-bio in editable mode
         run: |
+          pip uninstall -y triton 2>/dev/null || true
           pip install -e . --no-deps
 
       - name: Run Full Test Suite on ${{ matrix.backend }}
         env:
           KERAS_BACKEND: ${{ matrix.backend }}
+          TORCH_COMPILE_DISABLE: "1"
+          TORCHDYNAMO_DISABLE: "1"
         run: |
           pytest tests/ -v
 
       - name: Run Quickstart Script on ${{ matrix.backend }}
         env:
           KERAS_BACKEND: ${{ matrix.backend }}
+          TORCH_COMPILE_DISABLE: "1"
+          TORCHDYNAMO_DISABLE: "1"
         run: |
           python examples/prot_t5_quickstart.py
 
