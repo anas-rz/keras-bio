@@ -1,6 +1,15 @@
 """Protein sequence and structure models for keras-bio."""
 
-from keras_bio.protein import prot_t5
+from keras_bio.protein import esm2, prot_t5
+from keras_bio.protein.esm2 import (
+    ESM2Config,
+    ESM2ForMaskedLM,
+    ESM2ForSequenceClassification,
+    ESM2ForTokenClassification,
+    ESM2Model,
+    ESMTokenizer,
+    load_esm2_from_hf,
+)
 from keras_bio.protein.prot_t5 import (
     ProtT5Config,
     ProtT5EncoderModel,
@@ -20,6 +29,7 @@ from keras_bio.protein.prot_t5 import (
 )
 
 __all__ = [
+    # ProtT5
     "prot_t5",
     "ProtT5Config",
     "ProtT5EncoderModel",
@@ -36,4 +46,13 @@ __all__ = [
     "load_t5_encoder_from_hf",
     "load_t5_model_from_hf",
     "transfer_t5_weights",
+    # ESM-2
+    "esm2",
+    "ESM2Config",
+    "ESM2Model",
+    "ESM2ForMaskedLM",
+    "ESM2ForSequenceClassification",
+    "ESM2ForTokenClassification",
+    "ESMTokenizer",
+    "load_esm2_from_hf",
 ]

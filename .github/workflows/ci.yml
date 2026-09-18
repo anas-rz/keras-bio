@@ -62,11 +62,12 @@ jobs:
         run: |
           pytest tests/ -v
 
-      - name: Run Quickstart Script on ${{ matrix.backend }}
+      - name: Run Quickstart Scripts on ${{ matrix.backend }}
         env:
           KERAS_BACKEND: ${{ matrix.backend }}
           TORCH_COMPILE_DISABLE: "1"
           TORCHDYNAMO_DISABLE: "1"
         run: |
           python examples/prot_t5_quickstart.py
+          python examples/esm2_quickstart.py
 
