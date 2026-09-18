@@ -104,7 +104,6 @@ class HyenaPositionalEmbedding(layers.Layer):
         **kwargs: Any,
     ):
         super().__init__(**kwargs)
-        self._allow_non_tensor_positional_args = True
         self.config = config
         self.seq_len = int(config.max_seq_len)
         self.emb_dim = int(config.emb_dim)
@@ -219,7 +218,6 @@ class HyenaFilter(layers.Layer):
         **kwargs: Any,
     ):
         super().__init__(**kwargs)
-        self._allow_non_tensor_positional_args = True
         self.config = config
         self.d_model = int(config.d_model)
         self.hyena_order = int(config.hyena_order)
@@ -278,7 +276,7 @@ class HyenaFilter(layers.Layer):
         bias: Optional[keras.KerasTensor] = None,
     ) -> keras.KerasTensor:
         if k is None:
-            k = ops.transpose(self.filter(L)[0], (1, 0))
+            k = self.filter(L)[0]
         if bias is None:
             bias = self.bias
         return fftconv(x, k, bias)
