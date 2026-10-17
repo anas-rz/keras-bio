@@ -220,6 +220,7 @@ class HyenaFilter(layers.Layer):
     ):
         super().__init__(**kwargs)
         self.config = config
+        self._allow_non_tensor_positional_args = True
         self.d_model = int(config.d_model)
         self.hyena_order = int(config.hyena_order)
         self.filter_d_model = self.d_model * (self.hyena_order - 1)
@@ -272,12 +273,14 @@ class HyenaFilter(layers.Layer):
     def call(
         self,
         x: keras.KerasTensor,
-        L: Any,
+        L: Any = None,
         k: Optional[keras.KerasTensor] = None,
         bias: Optional[keras.KerasTensor] = None,
     ) -> keras.KerasTensor:
+        if L is None:
+            L = ops.shape(x)[-1]
         if k is None:
-            k = self.filter(L)[0]
+            k = ops.transpose(self.filter(L)[0], (1, 0))
         if bias is None:
             bias = self.bias
         return fftconv(x, k, bias)

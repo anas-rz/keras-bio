@@ -2,7 +2,7 @@
 
 __version__ = "0.1.0"
 
-from keras_bio import dna, protein
+from keras_bio import dna, protein, structure
 
-__all__ = ["__version__", "dna", "protein"]
+__all__ = ["__version__", "dna", "protein", "structure"]
 

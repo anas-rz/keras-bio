@@ -28,12 +28,20 @@ dependencies = [
 [project.optional-dependencies]
 torch = ["torch>=2.0.0"]
 transformers = ["transformers>=4.30.0", "sentencepiece", "tokenizers"]
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.25.0",
+]
 dev = [
     "pytest>=7.0.0",
     "torch>=2.0.0",
     "transformers>=4.30.0",
     "sentencepiece",
     "tokenizers",
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.25.0",
 ]
 
 [tool.setuptools.packages.find]

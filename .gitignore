@@ -58,4 +58,8 @@ venv.bak/
 .vscode/
 .idea/
 *.swp
+*.swo
+
+# MkDocs build directory
+site/
 *~

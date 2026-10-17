@@ -175,7 +175,7 @@ class ProtT5EncoderModel(keras.Model):
     def embed(
         self,
         sequences: Union[str, List[str]],
-        tokenizer=None,
+        tokenizer: Optional[Any] = None,
         pool: str = "mean",
     ):
         """Convenience method to compute embeddings directly from sequence strings.

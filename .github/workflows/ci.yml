@@ -72,4 +72,5 @@ jobs:
           python examples/esm2_quickstart.py
           python examples/dnabert_quickstart.py
           python examples/hyenadna_quickstart.py
+          python examples/esmfold_quickstart.py
 

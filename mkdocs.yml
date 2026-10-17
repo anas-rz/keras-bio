@@ -1,0 +1,84 @@
+site_name: keras-bio
+site_description: Multi-Backend Biological Sequence and Structure Foundation Models in Keras 3
+site_author: keras-bio contributors
+repo_name: anas-rz/keras-bio
+repo_url: https://github.com/anas-rz/keras-bio
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: teal
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]
+          options:
+            show_root_heading: true
+            show_source: true
+
+nav:
+  - Overview: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Multi-Backend Guide: getting-started/backends.md
+  - Protein Models:
+      - ProtT5: models/protein/prot_t5.md
+      - ESM-2: models/protein/esm2.md
+  - DNA Models:
+      - DNABERT: models/dna/dnabert.md
+      - HyenaDNA: models/dna/hyenadna.md
+  - 3D Structure Models:
+      - ESMFold: models/structure/esmfold.md
+  - Guides:
+      - Weight Porting: guides/weights_conversion.md
+      - PDB Structure Export: guides/structure_pdb.md
+  - API Reference:
+      - Protein: api/protein.md
+      - DNA: api/dna.md
+      - Structure: api/structure.md
+

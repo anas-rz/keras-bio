@@ -104,8 +104,10 @@ def test_hyena_filter(hyena_config):
 
     # Test call with fftconv
     x = ops.convert_to_tensor(np.random.randn(2, 64, 16).astype("float32"))
-    out = flt(x, 16)
+    out = flt(x, L=16)
     assert out.shape == (2, 64, 16)
+    out_default = flt(x)
+    assert out_default.shape == (2, 64, 16)
 
     # Serialization
     config = flt.get_config()
