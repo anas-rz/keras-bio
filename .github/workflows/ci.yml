@@ -3,8 +3,22 @@ name: CI (Multi-Backend)
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - "docs/**"
+      - "*.md"
+      - "mkdocs.yml"
+      - "LICENSE"
+      - ".gitignore"
+      - ".github/workflows/docs.yml"
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - "docs/**"
+      - "*.md"
+      - "mkdocs.yml"
+      - "LICENSE"
+      - ".gitignore"
+      - ".github/workflows/docs.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
