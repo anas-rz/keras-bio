@@ -1,0 +1,175 @@
+/* Modern Developer Aesthetics for Keras-Bio */
+
+:root {
+  --md-primary-fg-color: #d00000;
+  --md-primary-fg-color--light: #ff4d4d;
+  --md-primary-fg-color--dark: #a00000;
+  --md-accent-fg-color: #d00000;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #12141a;
+  --md-primary-fg-color--light: #1e222d;
+  --md-primary-fg-color--dark: #0a0b0e;
+  --md-accent-fg-color: #ff3344;
+  --md-default-bg-color: #0d1117;
+  --md-default-bg-color--light: #161b22;
+  --md-default-bg-color--lighter: #21262d;
+  --md-code-bg-color: #161b22;
+}
+
+/* Typography refinements */
+body, input {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+code, kbd, pre {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.88em;
+}
+
+/* Header & Tabs */
+.md-header {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.md-tabs {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-weight: 500;
+}
+
+/* Rounded, polished code blocks */
+.md-typeset pre > code {
+  border-radius: 8px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Feature grid / Hero styling */
+.hero-container {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem 1rem;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #d00000 0%, #ff5252 50%, #ff7b00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-md-color-scheme="slate"] .hero-title {
+  background: linear-gradient(135deg, #ff4d4d 0%, #ff7b00 50%, #ffaa00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--md-default-fg-color--light);
+  max-width: 680px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.5;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff !important;
+  background: #d00000;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(208, 0, 0, 0.25);
+}
+
+.btn-primary:hover {
+  background: #b00000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(208, 0, 0, 0.35);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--md-default-fg-color) !important;
+  background: var(--md-default-bg-color--lighter);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--md-default-bg-color--light);
+  transform: translateY(-1px);
+}
+
+/* Feature cards */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-default-bg-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--md-accent-fg-color);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card p {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.92rem;
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+/* Table styling */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-default-bg-color--lighter);
+  font-weight: 600;
+}
+

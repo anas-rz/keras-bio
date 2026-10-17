@@ -7,28 +7,47 @@ repo_url: https://github.com/anas-rz/keras-bio
 theme:
   name: material
   language: en
+  icon:
+    logo: material/dna
+    repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
-    - scheme: default
-      primary: teal
-      accent: deep purple
+    # Palette toggle for automatic mode based on system preference
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: red
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-night
         name: Switch to dark mode
-    - scheme: slate
-      primary: teal
-      accent: deep purple
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: red
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-sunny
         name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.expand
+    - navigation.path
     - navigation.top
-    - navigation.instant
+    - navigation.tracking
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.code.select
     - content.code.annotate
+    - content.tabs.link
+
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
   - admonition
@@ -81,4 +100,3 @@ nav:
       - Protein: api/protein.md
       - DNA: api/dna.md
       - Structure: api/structure.md
-
