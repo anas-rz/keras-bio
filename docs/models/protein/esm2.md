@@ -6,12 +6,12 @@
 
 - **Architecture**: Bidirectional Transformer Encoder with Rotary Position Embeddings (RoPE) and learned residue-residue contact prediction heads using Average Product Correction (APC).
 - **Available Presets**:
-  - `esm2_t6_8M` (6 layers, 320 dim)
-  - `esm2_t12_35M` (12 layers, 480 dim)
-  - `esm2_t30_150M` (30 layers, 640 dim)
-  - `esm2_t33_650M` (33 layers, 1280 dim)
-  - `esm2_t36_3B` (36 layers, 2560 dim)
-  - `esm2_t48_15B` (48 layers, 5120 dim)
+  - `esm2_t6_8M_UR50D` (6 layers, 320 dim)
+  - `esm2_t12_35M_UR50D` (12 layers, 480 dim)
+  - `esm2_t30_150M_UR50D` (30 layers, 640 dim)
+  - `esm2_t33_650M_UR50D` (33 layers, 1280 dim)
+  - `esm2_t36_3B_UR50D` (36 layers, 2560 dim)
+  - `esm2_t48_15B_UR50D` (48 layers, 5120 dim)
 - **Module**: `keras_bio.protein.esm2`
 
 ---
@@ -28,7 +28,7 @@ from keras_bio.protein.esm2 import (
 tokenizer = ESMTokenizer()
 sequences = ["MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG"]
 
-config = ESM2Config.from_preset("esm2_t6_8M")
+config = ESM2Config.from_preset("esm2_t6_8M_UR50D")
 model = ESM2Model(config)
 
 # High-level embedding extraction

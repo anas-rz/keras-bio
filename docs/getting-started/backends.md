@@ -19,6 +19,8 @@ Never call `.numpy()` directly on a tensor, as this method is backend-specific a
 ```python
 from keras import ops
 
+tensor = ops.ones((2, 3))
+
 # Recommended: works universally across JAX, Torch, and TensorFlow
 array_np = ops.convert_to_numpy(tensor)
 ```
@@ -38,6 +40,11 @@ x_tensor = ops.convert_to_tensor(x_np)
 Save models using the native `.keras` zip archive format:
 
 ```python
+from keras_bio.protein.esm2 import ESM2Config, ESM2Model
+
+model = ESM2Model(ESM2Config.from_preset("esm2_t6_8M_UR50D"))
+model.embed(["MKTVRQERLK"])  # build the model weights
+
 # Save model
 model.save("my_protein_model.keras")
 

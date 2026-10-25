@@ -35,6 +35,13 @@ pip install -e ".[docs]"
 pip install -e ".[dev]"
 ```
 
+Every documentation page with Python examples has a matching Colab notebook in
+`notebooks/`. After editing code in the docs, regenerate them with:
+
+```bash
+python scripts/colab_notebooks.py
+```
+
 ---
 
 ## Selecting Your Backend

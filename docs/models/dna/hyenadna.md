@@ -25,11 +25,14 @@ tokenizer = HyenaDNATokenizer()
 dna_seqs = ["ACTG" * 32, "GATC" * 16]
 
 # 2. Initialize Model
-config = HyenaDNAConfig.from_preset("hyenadna_tiny")
+config = HyenaDNAConfig.from_preset("hyenadna_tiny_1k")
 model = HyenaDNAModel(config)
 
 # 3. Extract embeddings
 embeddings = model.embed(dna_seqs, tokenizer=tokenizer, pool="mean")
+
+# 4. Tokenize for direct model calls
+batch = tokenizer(dna_seqs, padding=True, return_tensors="np")
 ```
 
 ---

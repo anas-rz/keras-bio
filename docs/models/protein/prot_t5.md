@@ -23,9 +23,8 @@ from keras_bio.protein import (
 tokenizer = ProtT5Tokenizer()
 sequences = ["PRTEINO", "MKTIIALSYIFCLVFA"]
 
-# 2. Initialize Model
-config = ProtT5Config.from_preset("prot_t5_xl_half_uniref50-enc")
-model = ProtT5EncoderModel(config)
+# 2. Load pretrained ProtT5-XL encoder weights from Hugging Face
+model = ProtT5EncoderModel.from_hf("Rostlab/prot_t5_xl_half_uniref50-enc")
 
 # 3. Extract Representations
 # Per-protein pooled embedding (shape: [batch_size, hidden_dim])
@@ -39,10 +38,16 @@ residue_emb = model.embed(sequences, tokenizer=tokenizer, pool="none")
 
 ## Downstream Heads
 
+The heads below use a small randomly initialized configuration so they run quickly;
+pass `model.config` to build them on the full ProtT5-XL architecture.
+
 ### Sequence Classification
 
 ```python
 from keras_bio.protein import ProtT5ForSequenceClassification
+
+config = ProtT5Config(d_model=256, d_ff=1024, num_layers=4, num_heads=4)
+batch = tokenizer(sequences, padding=True, return_tensors="np")
 
 classifier = ProtT5ForSequenceClassification(config, num_classes=3)
 logits = classifier(batch["input_ids"], attention_mask=batch["attention_mask"])

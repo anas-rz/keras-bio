@@ -37,8 +37,8 @@
 | Category | Model Architecture | Pretrained Checkpoints | Native Backends | Status |
 | :--- | :--- | :--- | :--- | :---: |
 | **Protein Sequences** | **ProtT5** | `prot_t5_xl_half_uniref50-enc`, `prot_t5_xl_uniref50` | TensorFlow, PyTorch, JAX | Ready |
-| **Protein Sequences** | **ESM-2** | `esm2_t6_8M`, `esm2_t12_35M`, `esm2_t30_150M`, `esm2_t33_650M`, `esm2_t36_3B`, `esm2_t48_15B` | TensorFlow, PyTorch, JAX | Ready |
-| **DNA Sequences** | **DNABERT** | `dnabert_3mer`, `dnabert_4mer`, `dnabert_5mer`, `dnabert_6mer` | TensorFlow, PyTorch, JAX | Ready |
+| **Protein Sequences** | **ESM-2** | `esm2_t6_8M_UR50D`, `esm2_t12_35M_UR50D`, `esm2_t30_150M_UR50D`, `esm2_t33_650M_UR50D`, `esm2_t36_3B_UR50D`, `esm2_t48_15B_UR50D` | TensorFlow, PyTorch, JAX | Ready |
+| **DNA Sequences** | **DNABERT** | `dnabert_3`, `dnabert_4`, `dnabert_5`, `dnabert_6` | TensorFlow, PyTorch, JAX | Ready |
 | **DNA Sequences** | **HyenaDNA** | `hyenadna_tiny_1k`, `hyenadna_small_32k`, `hyenadna_medium_160k`, `hyenadna_large_1m` | TensorFlow, PyTorch, JAX | Ready |
 | **3D Structures** | **ESMFold** | `esmfold_v1`, `esmfold_tiny` | TensorFlow, PyTorch, JAX | Ready |
 
@@ -51,8 +51,8 @@
     ```python
     from keras_bio.structure.esmfold import ESMFoldConfig, ESMFoldModel
 
-    # Load ESMFold model
-    model = ESMFoldModel(ESMFoldConfig.from_preset("esmfold_v1"))
+    # Load a lightweight ESMFold model (use "esmfold_v1" for the full-size architecture)
+    model = ESMFoldModel(ESMFoldConfig.from_preset("esmfold_tiny"))
 
     # Direct folding from amino acid sequences to PDB files
     result = model.infer("MLKNVQVQLV", num_recycles=3)
@@ -68,7 +68,7 @@
     from keras_bio.protein.esm2 import ESM2Config, ESM2Model, ESMTokenizer
 
     tokenizer = ESMTokenizer()
-    model = ESM2Model(ESM2Config.from_preset("esm2_t6_8M"))
+    model = ESM2Model(ESM2Config.from_preset("esm2_t6_8M_UR50D"))
 
     sequences = ["MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG"]
     embeddings = model.embed(sequences, tokenizer=tokenizer, pool="mean")

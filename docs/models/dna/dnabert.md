@@ -20,7 +20,7 @@ from keras_bio.dna.dnabert import (
 )
 
 # 1. Initialize 6-mer genomic tokenizer
-tokenizer = DNABERTTokenizer(k=6)
+tokenizer = DNABERTTokenizer(kmer=6)
 sequences = [
     "ATCGATCGATCGATCGATCGATCG",
     "GCTAGCTAGCTAGCTA",
@@ -30,7 +30,7 @@ sequences = [
 batch = tokenizer(sequences, padding=True, return_tensors="np")
 
 # 3. Model instantiation
-config = DNABERTConfig.from_preset("dnabert_6mer")
+config = DNABERTConfig.from_preset("dnabert_6")
 model = DNABERTModel(config)
 
 # 4. Extract sequence representations
