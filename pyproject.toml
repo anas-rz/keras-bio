@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "keras-bio"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Multi-backend biological sequence and structure foundation models in Keras 3"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -43,6 +43,9 @@ dev = [
     "mkdocs-material>=9.5.0",
     "mkdocstrings[python]>=0.25.0",
 ]
+
+[tool.setuptools.dynamic]
+version = { attr = "keras_bio.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["."]
