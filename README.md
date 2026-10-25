@@ -19,9 +19,7 @@ Runs seamlessly on **TensorFlow**, **PyTorch**, and **JAX**.
 ## Installation
 
 ```bash
-git clone https://github.com/anas-rz/keras-bio.git
-cd keras-bio
-pip install -e .
+pip install keras-bio
 ```
 
 To run on a specific backend, set the `KERAS_BACKEND` environment variable:

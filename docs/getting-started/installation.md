@@ -2,12 +2,10 @@
 
 ## Installing Keras-Bio
 
-Clone the repository and install in editable mode:
+Install the latest release from PyPI:
 
 ```bash
-git clone https://github.com/anas-rz/keras-bio.git
-cd keras-bio
-pip install -e .
+pip install keras-bio
 ```
 
 ### Optional Extras
@@ -16,10 +14,19 @@ To install dependencies for PyTorch or Hugging Face weight conversion:
 
 ```bash
 # PyTorch support
-pip install -e ".[torch]"
+pip install "keras-bio[torch]"
 
 # Hugging Face transformers weight porting utilities
-pip install -e ".[transformers]"
+pip install "keras-bio[transformers]"
+```
+
+### Development Install
+
+To work on `keras-bio` itself, clone the repository and install in editable mode:
+
+```bash
+git clone https://github.com/anas-rz/keras-bio.git
+cd keras-bio
 
 # Documentation build dependencies
 pip install -e ".[docs]"
